@@ -1,0 +1,25 @@
+{
+  "name": "ft-js",
+  "version": "0.0.1",
+  "description": "ft-js File Transfer JS. This tool is an implementation of ft in Node.js.",
+  "main": "main.js",
+  "bin": {
+    "ft-js": "main.js"
+  },
+  "scripts": {
+    "gen": "yarn run grpc_tools_node_protoc -I. --js_out=import_style=commonjs,binary:. --grpc_out=grpc_js:. ./proto/filetransfer_service.proto",
+    "fmt": "prettier --write '**/*.{js,json,md}'"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.5.5",
+    "google-protobuf": "^3.19.4",
+    "grpc-tools": "^1.11.2",
+    "mkdirp": "^1.0.4"
+  },
+  "devDependencies": {
+    "prettier": "^2.5.1"
+  }
+}
