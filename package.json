@@ -1,6 +1,6 @@
 {
   "name": "@shinshin86/ft-js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "ft-js File Transfer JS. This tool is an implementation of ft in Node.js.",
   "main": "main.js",
   "bin": {
