@@ -4,6 +4,30 @@ File Transfer JS
 
 This tool is an implementation of [ft](https://github.com/mattn/ft) in Node.js.
 
+## Install
+
+This tool is released as scoped modules and should be installed as follows.
+
+```sh
+# npm
+npm install -g ft-js@npm:@shinshin86/ft-js
+
+# yarn
+yarn global add ft-js@npm:@shinshin86/ft-js
+```
+
+### If you are using the Apple Silicon (M1 mac)
+
+For Apple Silicon, the dependent module is not supported and must be installed as follows.
+
+```sh
+# npm
+npm_config_target_arch=x64 npm install -g ft-js@npm:@shinshin86/ft-js
+
+# yarn
+npm_config_target_arch=x64 yarn global add ft-js@npm:@shinshin86/ft-js
+```
+
 ## Usage
 
 ```sh
