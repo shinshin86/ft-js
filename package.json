@@ -1,5 +1,5 @@
 {
-  "name": "ft-js",
+  "name": "@shinshin86/ft-js",
   "version": "0.0.1",
   "description": "ft-js File Transfer JS. This tool is an implementation of ft in Node.js.",
   "main": "main.js",
@@ -27,6 +27,9 @@
   "homepage": "https://github.com/shinshin86/ft-js#readme",
   "prettier": {
     "singleQuote": true
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.5.5",
