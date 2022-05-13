@@ -12,8 +12,14 @@ const mkdirp = require('mkdirp');
 
 const MAX_RECEIVE_MEASSAGE_LENGTH = 20971520;
 
+const EXCLUDE_PATHS = ['.', '..'];
+
 const download = async (client, data) => {
   const { name } = data;
+
+  if (EXCLUDE_PATHS.includes(name)) {
+    return;
+  }
 
   const downloadRequest = new DownloadRequestType();
   downloadRequest.setName(name);
