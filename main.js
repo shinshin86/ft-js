@@ -29,7 +29,7 @@ GLOBAL OPTIONS:
     --version, -v  print the version`);
 };
 
-const versionText = () => console.log('ft-js version: 0.0.1');
+const versionText = () => console.log(require('./package.json').version);
 
 (async () => {
   const args = process.argv.slice(2);
