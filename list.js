@@ -3,6 +3,7 @@ const {
   FileTransferServiceClient,
 } = require('./proto/filetransfer_service_grpc_pb');
 const { ListRequestType } = require('./proto/filetransfer_service_pb');
+const { EXCLUDE_PATHS } = require('./constants');
 
 const list = (address) => {
   const client = new FileTransferServiceClient(
@@ -18,6 +19,11 @@ const list = (address) => {
 
   call.on('data', function (response) {
     const name = response.getName();
+
+    if (EXCLUDE_PATHS.includes(name)) {
+      return;
+    }
+
     const size = response.getSize();
     const fileMode = response.getMode();
 

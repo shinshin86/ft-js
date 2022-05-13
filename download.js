@@ -9,10 +9,9 @@ const {
 const fs = require('fs');
 const path = require('path');
 const mkdirp = require('mkdirp');
+const { EXCLUDE_PATHS } = require('./constants');
 
 const MAX_RECEIVE_MEASSAGE_LENGTH = 20971520;
-
-const EXCLUDE_PATHS = ['.', '..'];
 
 const download = async (client, data) => {
   const { name } = data;
