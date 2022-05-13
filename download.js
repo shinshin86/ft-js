@@ -27,14 +27,14 @@ const download = async (client, data) => {
     const pathList = path.normalize(name).split(path.sep);
     if (pathList.length === 1) {
       fs.writeFile(name, fileContent, () => {
-        console.log('[ft-js:download] Save file ==> ', name);
+        console.log('[ft-js] download: Save file ==> ', name);
       });
     } else {
       mkdirp(path.dirname(name)).then((made) => {
-        console.log('[ft-js:download] make dir ==> ', made);
+        console.log('[ft-js] download: make dir ==> ', made);
 
         fs.writeFile(name, fileContent, () => {
-          console.log('[ft-js:download] Save file ==> ', name);
+          console.log('[ft-js] download: Save file ==> ', name);
         });
       });
     }
@@ -43,7 +43,7 @@ const download = async (client, data) => {
   });
 
   downloadCall.on('error', function (e) {
-    console.log('[ft-js:download] Error file: ', name);
+    console.log('[ft-js] download: Error file: ', name);
     console.log({ e });
   });
 };

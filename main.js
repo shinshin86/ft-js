@@ -49,15 +49,15 @@ const versionText = () => console.log('ft-js version: 0.0.1');
       versionText();
       break;
     case 'serve':
-      console.log('[ft-js]' + args[0] + ': ' + address);
+      console.log('[ft-js] ' + args[0] + ': ' + address);
       serve(address);
       break;
     case 'download':
-      console.log('[ft-js]' + args[0] + ': ' + address);
+      console.log('[ft-js] ' + args[0] + ': ' + address);
       download(address);
       break;
     case 'list':
-      console.log('[ft-js]' + args[0] + ': ' + address);
+      console.log('[ft-js] ' + args[0] + ': ' + address);
       list(address);
       break;
     default:
