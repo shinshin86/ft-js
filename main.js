@@ -42,10 +42,16 @@ const versionText = () => console.log(require('./package.json').version);
   const address = specifyAddress || DEFAULT_ADDRESS;
 
   switch (args[0]) {
-    case '--help' || '-h':
+    case '--help':
       usageText();
       break;
-    case '--version' || '-v':
+    case '-h':
+      usageText();
+      break;
+    case '--version':
+      versionText();
+      break;
+    case '-v':
       versionText();
       break;
     case 'serve':
