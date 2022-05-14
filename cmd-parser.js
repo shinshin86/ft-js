@@ -3,7 +3,7 @@ module.exports.parse = (args) => {
   let listOption = '';
 
   if (command === 'list') {
-    listOption = args[1] === '--json' && args[1];
+    listOption = args[1] === '--json' ? args[1] : '';
   }
 
   // find address
