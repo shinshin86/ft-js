@@ -67,7 +67,6 @@ const serve = (address) => {
   });
   server.bindAsync(address, grpc.ServerCredentials.createInsecure(), () => {
     server.start();
-    console.log('Server: Start');
   });
 };
 

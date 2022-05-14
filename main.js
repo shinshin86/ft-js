@@ -51,15 +51,13 @@ const versionText = () => console.log(require('./package.json').version);
       versionText();
       break;
     case 'serve':
-      console.log('[ft-js] ' + parsedArgs.command + ': ' + parsedArgs.address);
+      console.log('[ft-js] ' + parsedArgs.command + ': ' + address);
       serve(address);
       break;
     case 'download':
-      console.log('[ft-js] ' + parsedArgs.command + ': ' + parsedArgs.address);
       download(address);
       break;
     case 'list':
-      console.log('[ft-js] ' + parsedArgs.command + ': ' + parsedArgs.address);
       const format = parsedArgs.listOption === '--json' ? 'json' : 'csv';
       list(address, format);
       break;
