@@ -7,6 +7,7 @@
     "ft-js": "main.js"
   },
   "scripts": {
+    "test": "jest",
     "gen": "yarn run grpc_tools_node_protoc -I. --js_out=import_style=commonjs,binary:. --grpc_out=grpc_js:. ./proto/filetransfer_service.proto",
     "fmt": "prettier --write '**/*.{js,json,md}'"
   },
@@ -38,6 +39,7 @@
     "mkdirp": "^1.0.4"
   },
   "devDependencies": {
+    "jest": "^28.1.0",
     "prettier": "^2.5.1"
   }
 }
