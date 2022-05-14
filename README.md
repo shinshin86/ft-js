@@ -1,5 +1,7 @@
 # ft-js
 
+[![Test](https://github.com/shinshin86/ft-js/actions/workflows/test.yml/badge.svg)](https://github.com/shinshin86/ft-js/actions/workflows/test.yml)
+
 File Transfer JS
 
 This tool is an implementation of [ft](https://github.com/mattn/ft) in Node.js.
