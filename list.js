@@ -5,7 +5,7 @@ const {
 const { ListRequestType } = require('./proto/filetransfer_service_pb');
 const { EXCLUDE_PATHS } = require('./constants');
 
-const list = (address) => {
+const list = (address, format) => {
   const client = new FileTransferServiceClient(
     address,
     grpc.credentials.createInsecure()
@@ -13,9 +13,13 @@ const list = (address) => {
 
   const request = new ListRequestType();
 
-  console.log('name,size,mode,modtime');
+  if (format === 'csv') {
+    console.log('name,size,mode,modtime');
+  }
 
   const call = client.listFiles(request);
+
+  let fileList = [];
 
   call.on('data', function (response) {
     const name = response.getName();
@@ -30,9 +34,28 @@ const list = (address) => {
     const modTime = new proto.google.protobuf.Timestamp(
       response.getModtime().array
     );
-    console.log(
-      `"${name}","${size}","${fileMode}","${modTime.toDate().toISOString()}"`
-    );
+
+    if (format === 'csv') {
+      console.log(
+        `"${name}","${size}","${fileMode}","${modTime.toDate().toISOString()}"`
+      );
+    } else if (format === 'json') {
+      fileList.push({
+        name,
+        size,
+        mode: fileMode,
+        modtime: modTime.toDate().toISOString(),
+      });
+    } else {
+      throw new Error('Not found valid file foromat');
+    }
+  });
+
+  call.on('close', function () {
+    if (format === 'json') {
+      const json = { files: fileList };
+      console.log(JSON.stringify(json));
+    }
   });
 
   call.on('error', function (e) {

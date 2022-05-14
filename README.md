@@ -38,7 +38,7 @@ ft-js [global options] command [command options] [arguments...]
 
 - download - download files from server
 - serve - serve files
-- list - list files from server by CSV format
+- list - list files from server by CSV format or JSON format(`--json` option must be added)
 - help, h - Shows a list of commands or help for one command
 
 ## Development

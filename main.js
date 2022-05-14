@@ -2,6 +2,7 @@
 const serve = require('./serve');
 const list = require('./list');
 const download = require('./download');
+const { parse } = require('./cmd-parser');
 const DEFAULT_ADDRESS = '0.0.0.0:11111';
 
 const usageText = () => {
@@ -18,7 +19,7 @@ USAGE:
 COMMANDS:
     download  download files from server
     serve     serve files
-    list      list files from server by CSV format
+    list      list files from server by CSV format or JSON format(--json option must be added)
     help, h   Shows a list of commands or help for one command
 
 COMMAND OPTIONS:
@@ -32,16 +33,11 @@ GLOBAL OPTIONS:
 const versionText = () => console.log(require('./package.json').version);
 
 (async () => {
-  const args = process.argv.slice(2);
+  const parsedArgs = parse(process.argv.slice(2));
 
-  let specifyAddress;
-  if (args.length === 3 && args[1] === '-a') {
-    specifyAddress = args[2];
-  }
+  const address = parsedArgs.address || DEFAULT_ADDRESS;
 
-  const address = specifyAddress || DEFAULT_ADDRESS;
-
-  switch (args[0]) {
+  switch (parsedArgs.command) {
     case '--help':
       usageText();
       break;
@@ -55,16 +51,17 @@ const versionText = () => console.log(require('./package.json').version);
       versionText();
       break;
     case 'serve':
-      console.log('[ft-js] ' + args[0] + ': ' + address);
+      console.log('[ft-js] ' + parsedArgs.command + ': ' + parsedArgs.address);
       serve(address);
       break;
     case 'download':
-      console.log('[ft-js] ' + args[0] + ': ' + address);
+      console.log('[ft-js] ' + parsedArgs.command + ': ' + parsedArgs.address);
       download(address);
       break;
     case 'list':
-      console.log('[ft-js] ' + args[0] + ': ' + address);
-      list(address);
+      console.log('[ft-js] ' + parsedArgs.command + ': ' + parsedArgs.address);
+      const format = parsedArgs.listOption === '--json' ? 'json' : 'csv';
+      list(address, format);
       break;
     default:
       usageText();
